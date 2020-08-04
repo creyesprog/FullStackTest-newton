@@ -1,4 +1,5 @@
 ﻿using FullStackTest_newton.Infrastructure.Database.Models;
+using FullStackTest_newton.Infrastructure.Models;
 using FullStackTest_newton.Infrastructure.Models.DTOs;
 using FullStackTest_newton.Infrastructure.Repositories;
 using FullStackTest_newton.Infrastructure.Repositories.Interfaces;
@@ -13,11 +14,11 @@ using System.Web;
 
 namespace FullStackTest_newton.Infrastructure.Services
 {
-    public class GameService : IGameService
+    public class GameService : _BaseService, IGameService
     {
         private readonly IGameRepository gameRepository;
 
-        public GameService(IGameRepository gameRepository)
+        public GameService(IGameRepository gameRepository, IErrorModel errorModel) : base(errorModel)
         {
             this.gameRepository = gameRepository;
         }
@@ -56,6 +57,7 @@ namespace FullStackTest_newton.Infrastructure.Services
             }
             catch (DbException ex)
             {
+                AddModelError("Error grabbing data from database");
                 // Log errors
             }
             return success;

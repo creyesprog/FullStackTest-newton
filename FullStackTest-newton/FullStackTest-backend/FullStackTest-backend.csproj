@@ -140,6 +140,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GamesController.cs" />
+    <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,11 +149,16 @@
     <Compile Include="Infrastructure\Database\Models\Game.cs" />
     <Compile Include="Infrastructure\Models\DTOs\GameListResponseDTO.cs" />
     <Compile Include="Infrastructure\Models\DTOs\GameResponseDTO.cs" />
+    <Compile Include="Infrastructure\Models\DTOs\ResponseDTO.cs" />
     <Compile Include="Infrastructure\Models\DTOs\UpdateGameRequestDTO.cs" />
+    <Compile Include="Infrastructure\Models\ErrorModel.cs" />
+    <Compile Include="Infrastructure\Models\IError.cs" />
+    <Compile Include="Infrastructure\Models\IErrorModel.cs" />
     <Compile Include="Infrastructure\Repositories\GameRepository.cs" />
     <Compile Include="Infrastructure\Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Infrastructure\Services\GameService.cs" />
     <Compile Include="Infrastructure\Services\Interfaces\IGameService.cs" />
+    <Compile Include="Infrastructure\Services\_BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

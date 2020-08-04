@@ -12,19 +12,28 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
+using FullStackTest_newton.Infrastructure.Models;
+using FullStackTest_newton.Infrastructure.Database.Models;
 
 namespace FullStackTest_newton.Controllers
 {
     [RoutePrefix("api/games")]
-    public class GamesController : ApiController
+    public class GamesController : _BaseController
     {
         protected readonly IGameService gameService;
 
-        public GamesController()
+        public GamesController() : base()
         {
+            ErrorModel = new ErrorModel();
             GameDirectoryContext gameDb = new GameDirectoryContext();
             GameRepository gameRepository = new GameRepository(gameDb);
-            gameService = new GameService(gameRepository);
+            gameService = new GameService(gameRepository, ErrorModel);
+        }
+
+        public GamesController(IGameService gameService, IErrorModel errorModel) : base()
+        {
+            this.gameService = gameService;
+            ErrorModel = errorModel;
         }
 
         /// <summary>
@@ -47,7 +56,7 @@ namespace FullStackTest_newton.Controllers
                     Description = z.Description
                 }).ToList());
 
-            return Json(responseDTO);
+            return Ok(responseDTO);
         }
 
         [HttpGet]
@@ -66,13 +75,15 @@ namespace FullStackTest_newton.Controllers
                     Description = z.Result.Description
                 });
 
-            return Json(responseDTO);
+            return Ok(responseDTO);
         }
 
         [HttpPut]
         [Route("{id:int}")]
         public async Task<IHttpActionResult> Put(int id, [FromBody]UpdateGameRequestDTO dto)
         {
+            ResponseDTO responseDTO = new ResponseDTO(ErrorModel);
+
             if (ModelState.IsValid)
             {
                 // Massage data
@@ -83,8 +94,15 @@ namespace FullStackTest_newton.Controllers
 
                 await gameService.UpdateGame(dto);
 
-                return Ok();
+                // If no errors accumulated from controller or service then continue
+                if (ErrorModel.Errors.Count == 0)
+                {
+                    return Ok(responseDTO);
+                }
             }
+
+            // TODO: Distinguish between different error types (500, etc) and send back error obj (response DTO)
+
             return BadRequest();
         }
     }
