@@ -1,0 +1,296 @@
+/** ******************* Importing references ******************* */
+
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_fonts.scss';
+
+/** ******************* Utilities ******************* */
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: #0366d6;
+}
+
+.btn {
+    border-radius: $button-radius;
+
+    &.btn-primary {
+        color: #fff;
+        background-color: $button-color-blue;
+        border-color: #1861ac;
+    }
+
+    &.btn-secondary {
+        color: #fff;
+        background-color: $button-color-grey;
+        border-color: grey;
+    }
+}
+
+
+.text-green {
+    color: $text-color-green;
+}
+
+.nav-pills {
+    .nav-link.active {
+        color: #fff;
+        background-color: #1b6ec2;
+        border-color: #1861ac;
+    }
+
+    .show {
+        >.nav-link {
+            color: #fff;
+            background-color: #1b6ec2;
+            border-color: #1861ac;
+        }
+    }
+}
+
+/** ******************* Global Bootstrap overrides ******************* */
+
+.form-control {
+    box-shadow: none;
+}
+
+.modal-header {
+    h5 {
+        @include font-roboto-slab-bold;
+    }
+}
+
+nav {
+    background-color: $bg-white;
+
+    &.navbar {
+        border-radius: 0px;
+
+        .navbar-brand {
+            padding-top: .3125rem;
+            padding-bottom: .3125rem;
+            margin-right: 1rem;
+            font-size: 1.75rem;
+            line-height: inherit;
+            white-space: normal;
+            color: $text-color-black;
+        }
+    }
+}
+
+.table {
+    thead {
+        tr {
+            th {
+                border-top: 0;
+            }
+        }
+    }
+
+    color: $text-color-black;
+    border-radius: $card-radius;
+    background-color: $bg-off-white
+}
+
+/** ******************* Custom CSS ******************* */
+
+html {
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 60px;
+
+    body {
+        @include font-roboto;
+        display: flex;
+        min-height: 100vh;
+
+        header {
+            position: absolute;
+            width: 100%;
+
+            nav {
+                .container {
+                    @include font-roboto-slab-bold;
+                }
+            }
+        }
+
+        #root {
+            width: 100%;
+
+            .section-list {
+                min-height: 100%;
+                padding-top: 80px;
+                width: 100%;
+                background-color: $bg-blue-royal;
+
+                h1 {
+                    @include font-roboto-slab-bold;
+                    margin-bottom: 40px;
+                    color: $text-color-white;
+                    font-size: 3.5rem;
+                    text-align: center;
+                }
+
+                .list-container {
+                    min-height: 100%;
+                    width: 100%;
+                    flex-direction: column;
+                    overflow-x: auto;
+
+                    @include mobile {
+                        padding: 0px 10px;
+                    }
+
+                    @include tablet-s {
+                        padding: 0px 75px;
+                    }
+
+                    @include desktop-s {
+                        padding: 0px 150px;
+                    }
+
+                    @include desktop-l {
+                        padding: 0px 300px;
+                    }
+
+                    table {
+
+                        color: $text-color-black;
+                        border-radius: $card-radius;
+                        background-color: $bg-off-white;
+
+                        thead {
+                            tr {
+                                th {
+                                    @include font-roboto-slab-bold;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                th {
+                                    font-weight: 300;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .section-form {
+                min-height: 100%;
+                padding-top: 80px;
+                width: 100%;
+                background-color: $bg-blue-royal;
+
+                .form-container {
+                    width: 100%;
+                    flex-direction: column;
+
+                    h1 {
+                        @include font-roboto-slab-bold;
+                        margin-bottom: 40px;
+                        color: $text-color-white;
+                        font-size: 3.5rem;
+                    }
+
+                    #form-activity {
+                        background-color: $bg-off-white;
+                        color: $text-color-black;
+                        padding: 20px;
+                        border-radius: $card-radius;
+                        min-height: 300px;
+
+                        @include mobile {
+                            width: 350px;
+                        }
+
+                        .row {
+                            .form-group {
+                                text-align: left;
+                                font-weight: 300;
+
+                                label {
+                                    padding-left: 5px;
+                                }
+
+                                input {
+                                    border: 0;
+                                    border-bottom: 1px solid $border-line-grey;
+                                    border-radius: 0px;
+                                    background-color: transparent;
+                                    font-weight: 400;
+                                }
+
+                                textarea {
+                                    min-height: 150px;
+                                }
+                            }
+                        }
+
+                        .validation-summary-errors {
+                            color: red;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer {
+    text-align: center;
+    background-color: $bg-black;
+    color: $text-color-white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+
+    .container {
+        color: $text-color-white;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
