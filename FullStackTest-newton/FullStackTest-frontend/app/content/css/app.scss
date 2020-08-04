@@ -246,7 +246,8 @@ html {
                             }
                         }
 
-                        .validation-summary-errors {
+                        .validation-summary-errors,
+                        .validation-error {
                             color: red;
                             text-align: left;
                         }

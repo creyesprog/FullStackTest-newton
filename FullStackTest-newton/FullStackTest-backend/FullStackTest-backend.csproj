@@ -150,7 +150,9 @@
     <Compile Include="Infrastructure\Models\DTOs\GameResponseDTO.cs" />
     <Compile Include="Infrastructure\Models\DTOs\UpdateGameRequestDTO.cs" />
     <Compile Include="Infrastructure\Repositories\GameRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Infrastructure\Services\GameService.cs" />
+    <Compile Include="Infrastructure\Services\Interfaces\IGameService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

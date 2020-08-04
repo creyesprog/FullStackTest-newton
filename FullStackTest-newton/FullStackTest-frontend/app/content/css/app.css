@@ -442,7 +442,8 @@ html body #root .section-form .form-container #form-activity .row .form-group te
   min-height: 150px;
 }
 
-html body #root .section-form .form-container #form-activity .validation-summary-errors {
+html body #root .section-form .form-container #form-activity .validation-summary-errors,
+html body #root .section-form .form-container #form-activity .validation-error {
   color: red;
   text-align: left;
 }
