@@ -20,7 +20,7 @@ namespace FullStackTest_newton
         private static void EnableCors(HttpConfiguration config)
         {
             var cors = new EnableCorsAttribute(
-                origins: "*",
+                origins: "http://localhost:8000",
                 headers: "*",
                 methods: "*");
             config.EnableCors(cors);
